@@ -181,6 +181,7 @@ leave-mgmt/
 
 ## 🔒 Security
 
+<<<<<<< HEAD
 - JWT authentication
 - Password hashing with Bcrypt
 - Role-based access control
@@ -194,3 +195,119 @@ Open source for educational purposes.
 ---
 
 **Note:** Change `JWT_SECRET` to a strong random string in production. Use secure MongoDB connection string.
+=======
+### Quick Deployment (Recommended)
+
+For the fastest deployment experience, see **[QUICK_DEPLOY.md](./QUICK_DEPLOY.md)** for a 5-step guide.
+
+### Detailed Deployment Guide
+
+For comprehensive deployment instructions with multiple platform options, see **[DEPLOYMENT.md](./DEPLOYMENT.md)**.
+
+### Recommended Free Hosting
+
+**Backend:**
+- **Render** (Recommended) - Free tier available
+- Railway - Free tier available
+- Cyclic - Free tier for Node.js
+
+**Frontend:**
+- **Vercel** (Recommended) - Excellent for React/Vite apps
+- Netlify - Great for static sites
+- GitHub Pages - Free hosting
+
+**Database:**
+- **MongoDB Atlas** - Free tier (512MB storage)
+
+### Quick Steps
+
+1. **Set up MongoDB Atlas** (free)
+   - Create account at https://www.mongodb.com/cloud/atlas
+   - Create free cluster
+   - Get connection string
+
+2. **Deploy Backend to Render**
+   - Connect GitHub repository
+   - Set environment variables (MONGO_URI, JWT_SECRET)
+   - Deploy
+
+3. **Deploy Frontend to Vercel**
+   - Connect GitHub repository
+   - Set `VITE_API_BASE` to your backend URL
+   - Deploy
+
+4. **Update CORS**
+   - Add frontend URL to backend environment variables
+
+See **[QUICK_DEPLOY.md](./QUICK_DEPLOY.md)** for detailed step-by-step instructions.
+
+## 📊 Database Schema
+
+### Users Collection
+```javascript
+{
+  name: String,
+  email: String (unique, required),
+  password: String (hashed, required),
+  role: String (enum: ['employee', 'manager'], default: 'employee')
+}
+```
+
+### Leaves Collection
+```javascript
+{
+  userId: ObjectId (ref: User, required),
+  leaveType: String (required),
+  startDate: Date (required),
+  endDate: Date (required),
+  totalDays: Number (required),
+  reason: String (optional),
+  status: String (enum: ['pending', 'approved', 'rejected'], default: 'pending'),
+  createdAt: Date (default: Date.now)
+}
+```
+
+## 🔒 Security Implementation
+
+- **Password Hashing**: Bcrypt with salt rounds of 10
+- **JWT Authentication**: Token-based authentication
+- **Role-Based Access Control**: Employee and Manager roles
+- **Input Validation**: Server-side validation for all inputs
+- **Error Handling**: Secure error messages (no sensitive data exposure)
+- **CORS**: Configured for secure cross-origin requests
+
+## 📈 Performance Optimizations
+
+- **Database Indexing**: Email field indexed for fast lookups
+- **Efficient Queries**: Optimized MongoDB queries
+- **Client-Side State Management**: Zustand for efficient state updates
+- **Code Splitting**: React Router for lazy loading
+- **Optimized Builds**: Vite for fast development and production builds
+
+## 🧪 Testing Recommendations
+
+1. **Manual Testing:**
+   - Test all user flows (register, login, apply, approve, reject)
+   - Test error scenarios (invalid credentials, missing fields)
+   - Test role-based access (employee vs manager)
+
+2. **API Testing:**
+   - Use Postman or similar tools
+   - Test all endpoints with valid/invalid tokens
+   - Test validation errors
+
+3. **Browser Testing:**
+   - Test on Chrome, Firefox, Safari
+   - Test responsive design on mobile devices
+   - Test form validations
+
+## 📝 Code Quality Features
+
+- **Consistent Code Style**: Clean, readable code
+- **Error Handling**: Try-catch blocks with proper error messages
+- **Input Validation**: Both client and server-side
+- **Comments**: Key functions documented
+- **Modular Structure**: Separated concerns (routes, models, middleware)
+- **Reusable Components**: Toast, Modal components
+
+>>>>>>> d8ac92357d0b95ba6840151532ffad7a4ecfcb42
