@@ -2,6 +2,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../store/useAuth";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const auth = useAuth();
@@ -31,6 +32,7 @@ export default function Navbar() {
       </div>
 
       <div className="nav-right">
+        <ThemeToggle />
         {auth.token ? (
           <>
             <div className="user-info">

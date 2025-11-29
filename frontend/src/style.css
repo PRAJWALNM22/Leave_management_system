@@ -43,6 +43,29 @@
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
+/* Dark Mode Variables - Improved Contrast */
+.dark {
+  --bg: #0f172a;           /* Dark slate background */
+  --bg-gradient: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  --card: #1e293b;         /* Dark slate cards */
+  --card-hover: #334155;   /* Lighter on hover */
+  --text-main: #f8fafc;    /* Very light gray - HIGH CONTRAST */
+  --text-muted: #e2e8f0;   /* Light gray - BETTER VISIBILITY */
+  --text-light: #cbd5e1;   /* Medium light gray */
+  --border: #334155;       /* Dark border */
+  --border-light: #475569; /* Lighter dark border */
+  --primary-light: #1e3a8a; /* Darker blue for dark mode */
+  --success-light: #064e3b; /* Darker green for dark mode */
+  --danger-light: #7f1d1d; /* Darker red for dark mode */
+  --warning-light: #78350f; /* Darker amber for dark mode */
+  
+  /* Adjusted shadows for dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
 /* --- 2. GLOBAL STYLES & TYPOGRAPHY --- */
 
 body {
@@ -100,6 +123,10 @@ h3 {
   z-index: 100;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.95);
+}
+
+.dark .nav {
+  background: rgba(30, 41, 59, 0.95);
 }
 
 .nav-left {
@@ -162,6 +189,38 @@ h3 {
 .muted {
   color: var(--text-muted);
   font-size: 0.9rem;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.theme-toggle:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  transform: scale(1.1);
+}
+
+.dark .theme-toggle {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+.dark .theme-toggle:hover {
+  background: var(--card-hover);
+  border-color: var(--primary);
 }
 
 /* --- 4. BUTTONS: Solid & Interactive --- */
@@ -317,7 +376,7 @@ h3 {
 }
 
 .date-pill {
-    background-color: #f3f4f6; 
+    background-color: var(--bg); 
     padding: 4px 8px;
     border-radius: 4px;
     font-weight: 500;
@@ -326,6 +385,11 @@ h3 {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     display: inline-block; 
+}
+
+.dark .date-pill {
+    background-color: var(--card);
+    color: var(--text-muted);
 }
 /* --- END OF MODIFIED DATE STYLES --- */
 
@@ -415,7 +479,14 @@ select:focus {
   outline: none; 
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-  background-color: #ffffff;
+  background-color: var(--card);
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  background-color: var(--card);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
 }
 
 /* Textarea specific */
@@ -508,6 +579,11 @@ select:disabled {
     color: white;
 }
 
+.dark .table thead {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+}
+
 .table th {
     padding: var(--spacing-md);
     text-align: left;
@@ -551,14 +627,29 @@ select:disabled {
     color: #92400e;
 }
 
+.dark .status-badge.pending {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+}
+
 .status-badge.approved {
     background: var(--success-light);
     color: #065f46;
 }
 
+.dark .status-badge.approved {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+}
+
 .status-badge.rejected {
     background: var(--danger-light);
     color: #991b1b;
+}
+
+.dark .status-badge.rejected {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
 }
 
 /* --- 12. EMPTY STATES --- */
@@ -588,6 +679,12 @@ select:disabled {
     align-items: center;
     gap: var(--spacing-sm);
     font-weight: 500;
+}
+
+.dark .success-message {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border-color: rgba(16, 185, 129, 0.3);
 }
 
 /* --- 14. LOADING STATES --- */
@@ -623,6 +720,10 @@ select:disabled {
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%);
     border-radius: var(--radius-lg);
     margin-bottom: 48px;
+}
+
+.dark .hero {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
 }
 
 /* --- 16. MODAL & TOAST ANIMATIONS --- */
