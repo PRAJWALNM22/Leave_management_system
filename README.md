@@ -179,67 +179,9 @@ leave-mgmt/
 **Backend:** Node.js, Express, MongoDB, Mongoose, JWT, Bcrypt  
 **Frontend:** React, React Router, Vite, Axios, Zustand
 
-## 🔒 Security
 
-<<<<<<< HEAD
-- JWT authentication
-- Password hashing with Bcrypt
-- Role-based access control
-- Input validation
-- CORS configuration
 
-## 📄 License
 
-Open source for educational purposes.
-
----
-
-**Note:** Change `JWT_SECRET` to a strong random string in production. Use secure MongoDB connection string.
-=======
-### Quick Deployment (Recommended)
-
-For the fastest deployment experience, see **[QUICK_DEPLOY.md](./QUICK_DEPLOY.md)** for a 5-step guide.
-
-### Detailed Deployment Guide
-
-For comprehensive deployment instructions with multiple platform options, see **[DEPLOYMENT.md](./DEPLOYMENT.md)**.
-
-### Recommended Free Hosting
-
-**Backend:**
-- **Render** (Recommended) - Free tier available
-- Railway - Free tier available
-- Cyclic - Free tier for Node.js
-
-**Frontend:**
-- **Vercel** (Recommended) - Excellent for React/Vite apps
-- Netlify - Great for static sites
-- GitHub Pages - Free hosting
-
-**Database:**
-- **MongoDB Atlas** - Free tier (512MB storage)
-
-### Quick Steps
-
-1. **Set up MongoDB Atlas** (free)
-   - Create account at https://www.mongodb.com/cloud/atlas
-   - Create free cluster
-   - Get connection string
-
-2. **Deploy Backend to Render**
-   - Connect GitHub repository
-   - Set environment variables (MONGO_URI, JWT_SECRET)
-   - Deploy
-
-3. **Deploy Frontend to Vercel**
-   - Connect GitHub repository
-   - Set `VITE_API_BASE` to your backend URL
-   - Deploy
-
-4. **Update CORS**
-   - Add frontend URL to backend environment variables
-
-See **[QUICK_DEPLOY.md](./QUICK_DEPLOY.md)** for detailed step-by-step instructions.
 
 ## 📊 Database Schema
 
@@ -267,14 +209,7 @@ See **[QUICK_DEPLOY.md](./QUICK_DEPLOY.md)** for detailed step-by-step instructi
 }
 ```
 
-## 🔒 Security Implementation
 
-- **Password Hashing**: Bcrypt with salt rounds of 10
-- **JWT Authentication**: Token-based authentication
-- **Role-Based Access Control**: Employee and Manager roles
-- **Input Validation**: Server-side validation for all inputs
-- **Error Handling**: Secure error messages (no sensitive data exposure)
-- **CORS**: Configured for secure cross-origin requests
 
 ## 📈 Performance Optimizations
 
